@@ -10,6 +10,11 @@
         android:layout_height="0dip"
         android:layout_weight="1" />
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="2px"
+        android:background="#666666"
+    />
     <android.support.v4.app.FragmentTabHost
         android:id="@+id/tabhost"
         android:layout_width="match_parent"

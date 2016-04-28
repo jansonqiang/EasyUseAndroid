@@ -6,9 +6,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import com.qinag.easyuseandroid.R;
+import com.qinag.easyuseandroid.widget.BadgeView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -20,18 +21,23 @@ public class MyFragment4 extends Fragment {
 
 
 
-    @Bind(R.id.tx)
-    TextView tx;
+    @Bind(R.id.iamgeView)
+    ImageView imageView;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_my, container, false);
+
+        View rootView = inflater.inflate(R.layout.view_test_badge, container, false);
 
         ButterKnife.bind(this, rootView);
 
-        tx.setText("4");
+        BadgeView badgeView = new BadgeView(getContext() , imageView);
+
+        badgeView.show();
+        badgeView.setText("12");
+
 
         return rootView;
     }

@@ -19,7 +19,7 @@ import butterknife.ButterKnife;
  * pageView 里面的星系
  * Created by qiang on 2016/4/27.
  */
-public class ItemFragment extends Fragment {
+public class ScrollItemFragment extends Fragment {
 
     @Bind(R.id.layout)
     LinearLayout layout;
@@ -36,6 +36,16 @@ public class ItemFragment extends Fragment {
 
 
         View view = inflater.inflate(R.layout.item_fragment, container, false);
+
+
+        return view;
+
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
         ButterKnife.bind(this, view);
         for (int i = 0; i < imageCout; i++) {
             ImageView imageView = new ImageView(getContext());
@@ -44,14 +54,9 @@ public class ItemFragment extends Fragment {
             layout.addView(imageView);
         }
 
-        Log.d(this.getClass().getSimpleName()+" "+tagNum,"运行了onCreateView");
-
-
-        return view;
-
+        Log.d(this.getClass().getSimpleName() + " " + tagNum, "运行了onCreateView");
 
     }
-
 
     public void setNum(int tagNum){
         this.tagNum = tagNum;

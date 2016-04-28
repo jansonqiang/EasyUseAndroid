@@ -78,10 +78,16 @@ public class MyFragment1 extends Fragment {
 
         for (int i = 0; i < tabCout; i++) {
 
-            ItemFragment itemFragment =    new ItemFragment();
+            //当使用scroll 不会保存scroll的滚动位置 当使用listView 切换fragment保存list的状态
+            if(i==0){
+                ScrollItemFragment scrollItemFragment  = new ScrollItemFragment();
+                fragments.add(scrollItemFragment);
+            } else{
+                ListItemFragment itemFragment =    new ListItemFragment();
+                fragments.add(itemFragment);
+            }
 
-            itemFragment.setNum(i+1);
-            fragments.add(itemFragment);
+
         }
 
         if(pageAdapter==null)
