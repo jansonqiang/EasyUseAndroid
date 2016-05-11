@@ -33,9 +33,9 @@ public class MyFragment4 extends Fragment {
 
         ButterKnife.bind(this, rootView);
 
-        BadgeView badgeView = new BadgeView(getContext() , imageView);
+        BadgeView badgeView = new BadgeView(getContext() );
 
-        badgeView.show();
+        badgeView.setTargetView(imageView);
         badgeView.setText("12");
 
 

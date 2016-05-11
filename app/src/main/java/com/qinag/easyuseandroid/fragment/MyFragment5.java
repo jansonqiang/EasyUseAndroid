@@ -32,13 +32,11 @@ public class MyFragment5 extends Fragment {
 
         ButterKnife.bind(this, rootView);
 
-        BadgeView badgeView = new BadgeView(getContext() , tv);
-
+        BadgeView badgeView = new BadgeView(getContext() );
+        badgeView.setTargetView(tv);
 
         badgeView.setText("12");
-        badgeView.setBadgeMargin(100,0);
 
-        badgeView.show();
 
 
 

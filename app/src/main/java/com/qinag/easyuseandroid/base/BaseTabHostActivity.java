@@ -1,9 +1,8 @@
-package com.qinag.easyuseandroid.activity;
+package com.qinag.easyuseandroid.base;
 
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentTabHost;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -21,11 +20,9 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 /**
- * 底部TAB
- * Created by qiang on 2016/4/27.
+ * Created by qiang on 2016/5/10.
  */
-public class MyFragmentTabActivity extends AppCompatActivity {
-
+public abstract class BaseTabHostActivity extends BaseActivity {
     @Bind(R.id.realtabcontent)
     FrameLayout realtabcontent;
 
@@ -39,15 +36,13 @@ public class MyFragmentTabActivity extends AppCompatActivity {
 
     private BadgeView mBvNotice;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragment_tab);
         ButterKnife.bind(this);
-        // id 是fragment显示的区域
-        tabhost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
 
+        tabhost.setup(this, getSupportFragmentManager(), R.id.realtabcontent);
 
         indicator = getIndicatorView("综合", R.drawable.tab_icon_explore);
         addTab(MyFragment1.class, indicator);
@@ -65,15 +60,19 @@ public class MyFragmentTabActivity extends AppCompatActivity {
         indicator = getIndicatorView("团队", R.drawable.tab_icon_tweet);
         addTab(MyFragment4.class, indicator);
 
-
-
-
         tabhost.getTabWidget().setShowDividers(0);//不设置dividers
 
-
-
+        getSupportActionBar() ;
 
     }
+
+
+
+
+
+
+
+
 
 
     private void addTab(Class clas, View view) {
@@ -98,14 +97,14 @@ public class MyFragmentTabActivity extends AppCompatActivity {
 
         mBvNotice = new BadgeView(this);
         mBvNotice.setTargetView(tagView);
-       // mBvNotice.setBadgePosition(BadgeView.POSITION_TOP_RIGHT);
+        // mBvNotice.setBadgePosition(BadgeView.POSITION_TOP_RIGHT);
         //mBvNotice.setTextSize(TypedValue.COMPLEX_UNIT_SP, 10);
-      //  mBvNotice.setBackgroundResource(R.drawable.notification_bg);
+        //  mBvNotice.setBackgroundResource(R.drawable.notification_bg);
 
         mBvNotice.setTextColor(Color.WHITE);
         mBvNotice.setGravity(Gravity.CENTER);
         mBvNotice.setText("13");
-       // mBvNotice.setBadgeMargin(0,10,0,0);
+        // mBvNotice.setBadgeMargin(0,10,0,0);
 
         return mBvNotice;
 
@@ -119,5 +118,6 @@ public class MyFragmentTabActivity extends AppCompatActivity {
         // TODO Auto-generated method stub
         // 当 API Level > 11 调用这个方法可能导致奔溃（android.os.Build.VERSION.SDK_INT > 11）
     }
+
 
 }
